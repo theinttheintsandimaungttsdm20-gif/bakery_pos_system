@@ -1,0 +1,20 @@
+create database prj_se_bank1;
+use prj_se_bank1;
+create table bk_account(
+	account_id int primary key auto_increment,
+	holder_name varchar(50),
+	card_no varchar(20) unique,
+	account_balance int
+); 
+create table bk_transaction(
+	tran_id int primary key auto_increment,
+	tran_amt int,
+	tran_date date,
+	tran_time time,
+	tran_status enum('deposit','withdraw'),
+	account_id int,
+	foreign key(account_id) references bk_account(account_id)
+); 
+insert into bk_account values(null,'U Win Maw','1111-1111-1111-1111',100000);
+insert into bk_account values(null,'Daw Hla Myint','1111-1111-1111-2222',50000);
+insert into bk_account values(null,'U Toe Kyi','1111-1111-1111-3333',90000);

@@ -1,0 +1,72 @@
+create database prj_se_bank1;
+use prj_se_bank1;
+create table bk_account(
+	account_id int primary key auto_increment,
+	holder_name varchar(50),
+	card_no varchar(20) unique,
+	account_balance int
+); 
+create table bk_transaction(
+	tran_id int primary key auto_increment,
+	tran_amt int,
+	tran_date date,
+	tran_time time,
+	tran_status enum('deposit','withdraw'),
+	account_id int,
+	foreign key(account_id) references bk_account(account_id)
+); 
+insert into bk_account values(null,'U Win Maw','1111-1111-1111-1111',100000);
+insert into bk_account values(null,'Daw Hla Myint','1111-1111-1111-2222',50000);
+insert into bk_account values(null,'U Toe Kyi','1111-1111-1111-3333',90000);
+insert into bk_account values(null,'Bakery Shop','1111-9999-9999-9999',0);
+--------------------------
+create database prj_se_bank2;
+use prj_se_bank2;
+create table bk_account(
+	account_id int primary key auto_increment,
+	holder_name varchar(50),
+	card_no varchar(20) unique,
+	account_balance int
+); 
+create table bk_transaction(
+	tran_id int primary key auto_increment,
+	tran_amt int,
+	tran_date date,
+	tran_time time,
+	tran_status enum('deposit','withdraw'),
+	account_id int,
+	foreign key(account_id) references bk_account(account_id)
+); 
+insert into bk_account values(null,'Mr. Jone','2222-2222-2222-1111',100000);
+insert into bk_account values(null,'Ms. Smith','2222-2222-2222-2222',50000);
+insert into bk_account values(null,'Mr. William','2222-2222-2222-3333',90000);
+insert into bk_account values(null,'Mr. Tiger','2222-2222-2222-4444',10000);
+insert into bk_account values(null,'Mr. Lim','2222-2222-2222-5555',190000);
+insert into bk_account values(null,'Bakery Shop','2222-9999-9999-9999',0);
+-----------------------
+create database prj_se_bank3;
+use prj_se_bank3;
+create table bk_account(
+	account_id int primary key auto_increment,
+	holder_name varchar(50),
+	card_no varchar(20) unique,
+	account_balance int
+); 
+create table bk_transaction(
+	tran_id int primary key auto_increment,
+	tran_amt int,
+	tran_date date,
+	tran_time time,
+	tran_status enum('deposit','withdraw'),
+	account_id int,
+	foreign key(account_id) references bk_account(account_id)
+); 
+insert into bk_account values(null,'Mg Aye Min','3333-3333-3333-3331',100000);
+insert into bk_account values(null,'Mg San Lin','3333-3333-3333-3332',50000);
+insert into bk_account values(null,'Mg Thiha','3333-3333-3333-3333',90000);
+insert into bk_account values(null,'Mg Chan Tar','3333-3333-3333-3334',10000);
+insert into bk_account values(null,'Mg Toe Kyi','3333-3333-3333-3335',190000);
+insert into bk_account values(null,'Mg Phay','3333-3333-3333-3336',1000);
+insert into bk_account values(null,'Mg Win Moe','3333-3333-3333-3337',2000);
+insert into bk_account values(null,'Mg Lii Yan','3333-3333-3333-3338',50000);
+insert into bk_account values(null,'Bakery Shop','3333-9999-9999-9999',0);

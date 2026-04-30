@@ -1,0 +1,28 @@
+Oddmmyy_00000
+INV_000000000
+
+alter table TABLE_NAME convert to character set utf8;
+
+create view br_sales_view as
+select 
+	s.sales_id sid,date_format(s.sales_date,'%d-%m-%Y %h:%i:%s %p') sdateStr,
+	s.sales_date sdate,s.paid_status status,s.emp_id seid,e.emp_name sename
+	,(select sum(d.qty*d.price) from br_sales_detail d where d.sales_id=s.sales_id) stotal
+from br_sales s,br_employee e
+where s.emp_id=e.emp_id;
+
+-----------------------
+
+create view br_orders_view as
+select o.order_no ono,
+	date_format(o.order_date,'%d-%m-%Y') odate_str,
+	date_format(o.receive_date,'%d-%m-%Y') rdate_str,
+	o.order_date odate,
+	o.receive_date rdate,
+	if(o.order_status=1,'FINISH','NOT FINISH') ostatus,
+	o.paid_status pstatus,
+	c.cust_name cname,
+	(select sum(d.order_qty*d.order_price) from br_order_detail d where d.order_no=o.order_no) detail_total, 
+	(select sum(i.ing_cost*i.ing_qty) from br_ingredient i where i.order_no=o.order_no) ing_total
+	from br_order o,br_customer c
+	where o.cust_id=c.cust_id;
